@@ -57,54 +57,7 @@
             align-items: center;
         }
 
-        .profile-photo-container {
-            position: relative;
-            margin-bottom: 20px;
-        }
 
-        .profile-photo {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 4px solid rgba(255, 255, 255, 0.8);
-            object-fit: cover;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            display: none;
-        }
-
-        .photo-upload-btn {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 3px dashed rgba(255, 255, 255, 0.6);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-        }
-
-        .photo-upload-btn:hover {
-            border-color: rgba(255, 255, 255, 0.9);
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .photo-upload-btn i {
-            font-size: 2em;
-            margin-bottom: 5px;
-        }
-
-        .photo-upload-btn span {
-            font-size: 0.8em;
-            text-align: center;
-        }
-
-        #photoInput {
-            display: none;
-        }
 
         .name {
             font-size: 2.5em;
@@ -326,20 +279,10 @@
         <div class="header">
             <div class="profile-content">
                 <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</div>
-                
-                <div class="profile-photo-container">
-                    <img id="profilePhoto" class="profile-photo" alt="Profile Photo">
-                    <div class="photo-upload-btn" id="photoUploadBtn">
-                        <i class="fas fa-camera"></i>
-                        <span>Add Photo</span>
-                    </div>
-                    <input type="file" id="photoInput" accept="image/*">
-                </div>
-
                 <h1 class="name">Syed Rashad</h1>
                 <p class="age">Age: 30 Years</p>
                 <div class="social-links">
-                    <a href="#" class="linkedin-btn" id="linkedinBtn">
+                    <a href="https://www.linkedin.com/in/syed-rashad/" target="_blank" class="linkedin-btn">
                         <i class="fab fa-linkedin"></i>
                         My Social Profile
                     </a>
@@ -424,6 +367,7 @@
                     <p><strong>Education:</strong> Bachelor's in Business Administration - ICFAI</p>
                     <p><em>Rizq comes from Allah, not titles. I may pursue a master's, Insha'Allah, if needed to grow further in my career.</em></p>
                     <p><strong>Work:</strong> Senior Manager - Operations, CX & Compliance at a Wealthtech Company</p>
+                    <p><em>Have held senior leadership roles in previous organisations; detailed experience can be found on my LinkedIn profile.</em></p>
                 </div>
             </div>
 
@@ -436,8 +380,8 @@
                     <div class="family-member">
                         <h4><i class="fas fa-male"></i> Father</h4>
                         <p><strong>Name:</strong> Syed Nisar</p>
-                        <p><strong>Occupation:</strong> Retired</p>
-                        <p><strong>Role:</strong> Member - Masjid E Al Quba</p>
+                        <p><strong>Status:</strong> Retired</p>
+                        <p><strong>Current Role:</strong> Member - Masjid E Al Quba</p>
                     </div>
                     <div class="family-member">
                         <h4><i class="fas fa-female"></i> Mother</h4>
@@ -469,7 +413,7 @@
                     </div>
                     <div class="contact-item">
                         <i class="fab fa-linkedin"></i>
-                        <span id="linkedinDisplay">LinkedIn: Not Added</span>
+                        <span>LinkedIn: <a href="https://www.linkedin.com/in/syed-rashad/" target="_blank" style="color: #fff; text-decoration: underline;">https://www.linkedin.com/in/syed-rashad/</a></span>
                     </div>
                 </div>
             </div>
@@ -498,21 +442,29 @@
             }
         });
 
-        // LinkedIn profile integration
-        document.getElementById('linkedinBtn').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Replace with your actual LinkedIn profile URL
-            const linkedinUrl = prompt('Please enter your LinkedIn profile URL:', 'https://linkedin.com/in/your-profile');
-            
-            if (linkedinUrl && linkedinUrl.trim() !== '' && linkedinUrl !== 'https://linkedin.com/in/your-profile') {
-                // Update the contact section display
-                document.getElementById('linkedinDisplay').innerHTML = `LinkedIn: <a href="${linkedinUrl}" target="_blank" style="color: #fff; text-decoration: underline;">${linkedinUrl}</a>`;
-                
-                // Store in memory for this session
-                window.linkedinProfile = linkedinUrl;
+        // Photo upload functionality
+        document.getElementById('photoUploadBtn').addEventListener('click', function() {
+            document.getElementById('photoInput').click();
+        });
+
+        document.getElementById('photoInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const profilePhoto = document.getElementById('profilePhoto');
+                    const uploadBtn = document.getElementById('photoUploadBtn');
+                    
+                    profilePhoto.src = e.target.result;
+                    profilePhoto.style.display = 'block';
+                    uploadBtn.style.display = 'none';
+                };
+                reader.readAsDataURL(file);
             }
         });
+
+        // LinkedIn profile integration - now static
+        // Profile URL is now hardcoded and doesn't need dynamic updating
 
         // Add smooth scrolling for internal links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
