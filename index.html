@@ -57,8 +57,6 @@
             align-items: center;
         }
 
-
-
         .name {
             font-size: 2.5em;
             font-weight: 700;
@@ -346,6 +344,24 @@
 
             <div class="section">
                 <h2 class="section-title">
+                    <i class="fas fa-clipboard-list"></i>
+                    Expectations
+                </h2>
+                <div class="section-content">
+                    <p><strong>Age:</strong> Preferably at least 3-4 years younger or below; not older than 28 years.</p>
+                    
+                    <p><strong>Height:</strong> Ideally 5'4" to 5'8"</p>
+                    
+                    <p><strong>Religious Values:</strong> Should be a practising Muslimah, performs Salah and Sawm regularly, observes Pardah/Abaya, and strictly avoids Shirk and Bid'ah.</p>
+                    
+                    <p><strong>Work & Career:</strong> Preference for a homemaker. If working, she should be open to mutually discussing how work aligns with family life. Career should not take precedence over faith, family, and our shared life vision.</p>
+                    
+                    <p><strong>Character:</strong> Should embody modesty, kindness, and a sincere commitment to Islamic principles.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">
                     <i class="fas fa-ring"></i>
                     Our Marriage Vision
                 </h2>
@@ -421,51 +437,6 @@
     </div>
 
     <script>
-        // Photo upload functionality
-        document.getElementById('photoUploadBtn').addEventListener('click', function() {
-            document.getElementById('photoInput').click();
-        });
-
-        document.getElementById('photoInput').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const profilePhoto = document.getElementById('profilePhoto');
-                    const uploadBtn = document.getElementById('photoUploadBtn');
-                    
-                    profilePhoto.src = e.target.result;
-                    profilePhoto.style.display = 'block';
-                    uploadBtn.style.display = 'none';
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-
-        // Photo upload functionality
-        document.getElementById('photoUploadBtn').addEventListener('click', function() {
-            document.getElementById('photoInput').click();
-        });
-
-        document.getElementById('photoInput').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    const profilePhoto = document.getElementById('profilePhoto');
-                    const uploadBtn = document.getElementById('photoUploadBtn');
-                    
-                    profilePhoto.src = e.target.result;
-                    profilePhoto.style.display = 'block';
-                    uploadBtn.style.display = 'none';
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-
-        // LinkedIn profile integration - now static
-        // Profile URL is now hardcoded and doesn't need dynamic updating
-
         // Add smooth scrolling for internal links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
